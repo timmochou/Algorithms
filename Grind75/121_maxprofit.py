@@ -1,14 +1,14 @@
 # Input: prices = [7,1,5,3,6,4]
 # Output: 5
-def maxProfit(prices):
+def MaxProfit(prices):
+    min_price = float('inf') # 初始為正無窮大
     max_profit = 0
-    for i in range(len(prices)):
-        for j in range(i+1,len(prices)):
-            if prices[j]-prices[i] > max_profit:
-                max_profit = prices[j]-prices[i]
-            
+    for price in prices:
+        if price < min_price:
+            min_price = price  # Update min_price if current price is lower
+        elif price - min_price > max_profit:
+            max_profit = price - min_price  # Update max_profit if current profit is higher
     return max_profit
 
-print(maxProfit([7,6,4,3,1]))
 
-        
+print(MaxProfit([7,1,5,3,6,4]))
